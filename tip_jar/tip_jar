@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+require_relative 'tip_jar'
+
+puts "How was your service (1-5)?"
+service_rating = gets.chomp.to_i
+tip = TipJar.calculate_tip(service_rating)
+
+puts "How much was the total"
+subtotal = gets.chomp.to_f
+puts "How many people were in your party?"
+num_in_party = gets.chomp.to_i
+puts "How much is tax?"
+tax = gets.chomp.to_f
+total = TipJar.calculate_total(subtotal, num_in_party, tax, tip)
+
+puts sprintf('%.2f', total)

@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+require_relative 'fizz_buzz'
+
+puts "what's my number"
+
+num = gets.chomp
+return_value = FizzBuzz.execute_max(num.to_i)
+puts "thanks! #{return_value}"
