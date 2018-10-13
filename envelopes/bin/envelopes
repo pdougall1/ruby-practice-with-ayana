@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+require_relative "../lib/envelopes"
+ 
+module Envelopes 
+  class Interface < Thor
+    desc "add_money AMT", "add an amount"
+    def add_money(amt)
+      # call into a class that is Budget.add_money
+      Budget.add_money(amt)
+    end
+
+    desc "log_in NAME", "log in"
+    def log_in(name)
+      Store.log_in(name)
+    end
+    
+
+  end
+  
+end
+
+puts "arguments #{ARGV}"
+ 
+Envelopes::Interface.start(ARGV)
