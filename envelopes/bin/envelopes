@@ -3,17 +3,31 @@ require_relative "../lib/envelopes"
  
 module Envelopes 
   class Interface < Thor
-    desc "add_money AMT", "add an amount"
-    def add_money(amt)
-      # call into a class that is Budget.add_money
-      Budget.add_money(amt)
-    end
 
     desc "log_in NAME", "log in"
     def log_in(name)
       Store.log_in(name)
     end
     
+    desc "create_envelope LIST", "create empty envelope"
+    def create_envelope(*categories)
+      Budget.create_new_categories(categories)
+    end
+
+    desc "view_envelopes", "view envelopes and their contents"
+    def view_envelopes
+      puts Budget.list_of_categories
+    end
+
+    desc "add_money_to_envelopes AMT", "add money to each envelope"
+    def add_money_to_envelopes(amt)
+      Budget.add_money_to_categories(amt)
+    end
+
+    desc "spend_money AMT CATEGORY", "spend_money from envelope"
+    def spend_money(amt, category)
+      Budget.spend_money(amt, category)
+    end
 
   end
   
