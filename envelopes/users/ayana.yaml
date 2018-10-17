@@ -1,4 +1,14 @@
 ---
-food: 150
-car: 150
-coffee: 50
+:envelopes:
+  groceries: 160
+  books: 40
+  shoes: 40
+:ledger:
+- :timestamp: '2018-10-17T03:51:50Z'
+  :category: groceries
+  :amount: 30
+  :transation_type: :debit
+- :timestamp: '2018-10-17T03:52:15Z'
+  :category: groceries
+  :amount: 30
+  :transation_type: :debit

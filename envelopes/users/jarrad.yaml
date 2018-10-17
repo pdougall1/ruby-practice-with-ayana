@@ -1,0 +1,14 @@
+---
+:envelopes:
+  groceries: -4
+  gas: -20
+  misc: 13
+:ledger:
+- :timestamp: '2018-10-16T13:22:44Z'
+  :category: gas
+  :amount: 30
+  :transation_type: :debit
+- :timestamp: '2018-10-16T13:23:52Z'
+  :category: groceries
+  :amount: 10
+  :transation_type: :debit

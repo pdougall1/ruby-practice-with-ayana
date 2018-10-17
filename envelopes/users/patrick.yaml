@@ -1,4 +1,11 @@
 ---
-coffee: 33
-food: 32
-dog_foods: 95
+:envelopes:
+  gas: 40
+  coffee: 15
+  books: 35
+  groceries: 35
+:ledger:
+- :timestamp: '2018-10-17T13:54:09Z'
+  :category: groceries
+  :amount: 25
+  :transation_type: :debit
