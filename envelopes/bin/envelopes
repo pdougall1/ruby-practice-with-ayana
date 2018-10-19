@@ -21,7 +21,30 @@ module Envelopes
 
     desc "add_money_to_envelopes AMT", "add money to each envelope"
     def add_money_to_envelopes(amt)
-      Budget.add_money_to_categories(amt)
+      amt = amt.to_i
+      cats = Budget.list_of_categories
+      amounts_to_add = {}
+      while(amt > 0)
+        cats.each do |key, value|
+          break if amt == 0
+          puts "You have #{amt} to distribute"
+          puts "How much do you want to put in #{key}"
+          done = false
+          while(!done)
+              amt_to_add = STDIN.gets.chomp.to_i
+              if amt >= amt_to_add
+                  amt -= amt_to_add
+                  amounts_to_add[key] = amt_to_add
+                  done = true
+              else
+                  puts "sorry, you only have #{amt} left to distrubute"
+                  puts "How much do you want to put in #{key}"
+              end
+          end
+        end
+    end
+
+      Budget.add_money_to_categories(amounts_to_add)
     end
 
     desc "spend_money AMT CATEGORY", "spend_money from envelope"
