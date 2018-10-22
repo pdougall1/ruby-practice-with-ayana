@@ -3,25 +3,25 @@ module Envelopes
     class Budget
 
         
-        def self.create_new_categories(categories)
-            Store.save_categories(categories)     
+        def self.create_new_categories(categories, current_user)
+            Store.save_categories(categories, current_user)     
         end
 
-        def self.list_of_categories
-            Store.view_categories
+        def self.list_of_categories(current_user)
+            Store.view_categories(current_user)
         end
 
-        def self.add_money_to_categories(amounts_to_add)
-            new.add_money_to_categories(amounts_to_add)
+        def self.add_money_to_categories(amt, current_user)
+            new(current_user).add_money_to_categories(amt)
             
 
         end
 
-        def self.spend_money(amt, category)
-            new.spend_money(amt, category)
+        def self.spend_money(amt, category, current_user)
+            new(current_user).spend_money(amt, category)
         end
 
-        def initialize(store = Store.new)
+        def initialize(current_user, store = Store.new(current_user))
             @store = store   
             
         end

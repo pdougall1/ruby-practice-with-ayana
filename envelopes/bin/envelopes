@@ -6,17 +6,22 @@ module Envelopes
 
     desc "log_in NAME", "log in"
     def log_in(name)
-      Store.log_in(name)
+      CurrentUser.log_in(name)
+    end
+
+    desc "current_user", "returns the person logged in"
+    def current_user
+      puts CurrentUser.current_user
     end
     
     desc "create_envelope LIST", "create empty envelope"
     def create_envelope(*categories)
-      Budget.create_new_categories(categories)
+      Budget.create_new_categories(categories, current_user)
     end
 
     desc "view_envelopes", "view envelopes and their contents"
     def view_envelopes
-      puts Budget.list_of_categories
+      puts Budget.list_of_categories(current_user)
     end
 
     desc "add_money_to_envelopes AMT", "add money to each envelope"
@@ -44,12 +49,12 @@ module Envelopes
         end
     end
 
-      Budget.add_money_to_categories(amounts_to_add)
+      Budget.add_money_to_categories(amt, current_user)
     end
 
     desc "spend_money AMT CATEGORY", "spend_money from envelope"
     def spend_money(amt, category)
-      Budget.spend_money(amt, category)
+      Budget.spend_money(amt, category, current_user)
     end
 
   end

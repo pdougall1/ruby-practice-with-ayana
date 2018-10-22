@@ -3,8 +3,10 @@ module Envelopes
         USER_FILES_PATH = "#{__dir__}/../../users"
         CURRENT_USER = "#{USER_FILES_PATH}/current_user.yaml"
         
-        def initialize
-            @current_user = YAML.load(File.read(CURRENT_USER))
+
+        def self.current_user
+            #should I assign current user to a variable?
+            current_user = YAML.load(File.read(CURRENT_USER))
         end
 
         def self.log_in(current_user)

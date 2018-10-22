@@ -3,6 +3,7 @@ require 'yaml'
 require "thor"
 require_relative './envelopes/budget'
 require_relative './envelopes/store'
+require_relative './envelopes/current_user'
 
 module Envelopes
 
