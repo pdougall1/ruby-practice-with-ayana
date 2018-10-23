@@ -1,6 +1,6 @@
 ---
 :envelopes:
-  gas: 40
+  gas: 240
   coffee: 15
   books: 35
   groceries: 35
