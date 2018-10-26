@@ -1,16 +1,10 @@
-require 'yaml'
-require 'byebug'
-require 'time'
 module Envelopes
-
-
     class Store
 
         USER_FILES_PATH = "#{__dir__}/../../users"
         CURRENT_USER = "#{USER_FILES_PATH}/current_user.yaml"
 
         def initialize(current_user)
-            
             @current_user = current_user
             begin  
                 @file_path = "#{USER_FILES_PATH}/#{@current_user}.yaml"
@@ -24,16 +18,12 @@ module Envelopes
             end   
         end
 
-        def self.save_categories(categories, current_user)
-            new(current_user).add_categories(categories)                
-        end
-
-        def self.view_categories(current_user)
-            new(current_user).categories
-        end
-
         def categories
             @envelopes
+        end
+
+        def category_names
+            @envelopes.keys
         end
 
         def add_to_categories(category_name, amt)
@@ -48,7 +38,6 @@ module Envelopes
 
         def deduct_money(category, amt)
             @envelopes[category] -= amt
-            puts category
             save_data
         end
 
@@ -67,7 +56,5 @@ module Envelopes
             @data[:ledger] = @ledger
             File.open("#{USER_FILES_PATH}/#{@current_user}.yaml", "w") { |f| f.write(@data.to_yaml) }
         end
-
-
     end
 end

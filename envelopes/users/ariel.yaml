@@ -1,0 +1,14 @@
+---
+:envelopes:
+  groceries: 90
+  coffee: 60
+  shoes: 10
+:ledger:
+- :timestamp: '2018-10-26T03:12:06Z'
+  :category: groceries
+  :amount: 30
+  :transation_type: :debit
+- :timestamp: '2018-10-26T03:42:17Z'
+  :category: shoes
+  :amount: 10
+  :transation_type: :debit

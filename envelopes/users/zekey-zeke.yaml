@@ -1,0 +1,13 @@
+---
+:envelopes:
+  books: 120
+  treats: 80
+:ledger:
+- :timestamp: '2018-10-26T03:50:07Z'
+  :category: books
+  :amount: 110
+  :transation_type: :debit
+- :timestamp: '2018-10-26T03:50:17Z'
+  :category: treats
+  :amount: 50
+  :transation_type: :debit

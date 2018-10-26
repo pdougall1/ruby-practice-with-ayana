@@ -1,9 +1,11 @@
 require "byebug"
 require 'yaml'
 require "thor"
+require "time"
 require_relative './envelopes/budget'
 require_relative './envelopes/store'
 require_relative './envelopes/current_user'
+require_relative './envelopes/income_allocation'
 
 module Envelopes
 

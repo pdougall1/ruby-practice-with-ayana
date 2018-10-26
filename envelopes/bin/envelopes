@@ -1,66 +1,49 @@
 #!/usr/bin/env ruby
-require_relative "../lib/envelopes"
- 
+
+require_relative "../lib/envelopes" # this loads all the library files
+
 module Envelopes 
   class Interface < Thor
+
+    no_commands do
+      def current_user
+        CurrentUser.current_user
+      end
+    end
 
     desc "log_in NAME", "log in"
     def log_in(name)
       CurrentUser.log_in(name)
     end
 
-    desc "current_user", "returns the person logged in"
-    def current_user
-      puts CurrentUser.current_user
+    desc "who_is_logged_in", "prints logged in user"
+    def who_is_logged_in
+      puts current_user
     end
-    
+
     desc "create_envelope LIST", "create empty envelope"
     def create_envelope(*categories)
-      Budget.create_new_categories(categories, current_user)
+      Budget.create_new_categories(categories, Store.new(current_user))
     end
 
     desc "view_envelopes", "view envelopes and their contents"
     def view_envelopes
-      puts Budget.list_of_categories(current_user)
+      puts Budget.list_of_categories(Store.new(current_user))
     end
 
     desc "add_money_to_envelopes AMT", "add money to each envelope"
     def add_money_to_envelopes(amt)
       amt = amt.to_i
-      cats = Budget.list_of_categories
-      amounts_to_add = {}
-      while(amt > 0)
-        cats.each do |key, value|
-          break if amt == 0
-          puts "You have #{amt} to distribute"
-          puts "How much do you want to put in #{key}"
-          done = false
-          while(!done)
-              amt_to_add = STDIN.gets.chomp.to_i
-              if amt >= amt_to_add
-                  amt -= amt_to_add
-                  amounts_to_add[key] = amt_to_add
-                  done = true
-              else
-                  puts "sorry, you only have #{amt} left to distrubute"
-                  puts "How much do you want to put in #{key}"
-              end
-          end
-        end
-    end
-
-      Budget.add_money_to_categories(amt, current_user)
+      cats = Budget.list_of_category_names(Store.new(current_user))
+      amounts_to_add = IncomeAllocation.start(amt, cats)
+      Budget.add_money_to_categories(amounts_to_add, Store.new(current_user))
     end
 
     desc "spend_money AMT CATEGORY", "spend_money from envelope"
     def spend_money(amt, category)
-      Budget.spend_money(amt, category, current_user)
+      Budget.spend_money(amt, category, Store.new(current_user))
     end
-
   end
-  
 end
 
-puts "arguments #{ARGV}"
- 
 Envelopes::Interface.start(ARGV)
