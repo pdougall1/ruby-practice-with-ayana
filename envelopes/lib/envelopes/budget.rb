@@ -20,7 +20,6 @@ module Envelopes
             end
         end
 
-
         def self.spend_money(amt, category, store)
             amt=amt.to_i
             store.deduct_money(category, amt)

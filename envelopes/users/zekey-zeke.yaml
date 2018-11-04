@@ -1,7 +1,7 @@
 ---
 :envelopes:
-  books: 120
-  treats: 80
+  books: 300
+  treats: 100
 :ledger:
 - :timestamp: '2018-10-26T03:50:07Z'
   :category: books

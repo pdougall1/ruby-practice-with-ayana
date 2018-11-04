@@ -35,7 +35,7 @@ module Envelopes
     def add_money_to_envelopes(amt)
       amt = amt.to_i
       cats = Budget.list_of_category_names(Store.new(current_user))
-      amounts_to_add = IncomeAllocation.start(amt, cats)
+      amounts_to_add = IncomeAllocation.start(amt, cats, Budget.list_of_categories(Store.new(current_user)))
       Budget.add_money_to_categories(amounts_to_add, Store.new(current_user))
     end
 
