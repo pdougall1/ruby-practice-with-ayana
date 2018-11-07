@@ -51,6 +51,10 @@ module Envelopes
             save_data
         end
 
+        def ledger
+            @ledger
+        end
+
         def save_data
             @data[:envelopes] = @envelopes
             @data[:ledger] = @ledger
