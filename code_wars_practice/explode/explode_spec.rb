@@ -9,6 +9,7 @@ RSpec.describe "explode" do
     context "when given an array of 1 integer, int_a and a character, a " do
         it "returns an array that contains [int_a, a]" do
             expect(explode([3,'a'])).to eq([[3,'a'], [3,'a'], [3,'a']])
+            expect(explode([6, 'c'])).to eq([[6, 'c'], [6, 'c'], [6, 'c'], [6, 'c'], [6, 'c'], [6, 'c']])
         end
     end
 end
