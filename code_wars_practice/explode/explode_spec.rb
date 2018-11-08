@@ -6,10 +6,17 @@ RSpec.describe "explode" do
             expect(explode([9,3])).to eq([[9, 3], [9, 3], [9, 3], [9, 3], [9, 3], [9, 3], [9, 3], [9, 3], [9, 3], [9, 3], [9, 3], [9, 3]])
         end
     end
+    
     context "when given an array of 1 integer, int_a and a character, a " do
         it "returns an array that contains [int_a, a]" do
             expect(explode([3,'a'])).to eq([[3,'a'], [3,'a'], [3,'a']])
             expect(explode([6, 'c'])).to eq([[6, 'c'], [6, 'c'], [6, 'c'], [6, 'c'], [6, 'c'], [6, 'c']])
+        end
+    end
+
+    context "when given an array with no integers" do
+        it "returns a string, 'Void!'" do
+            expect(explode(['a', 'b'])).to eq('Void!')
         end
     end
 end
