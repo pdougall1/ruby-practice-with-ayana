@@ -6,4 +6,10 @@ RSpec.describe "find_outlier" do
             expect(find_outlier([0, 1, 2])).to eq(1)
         end
     end
+
+    context "when given an array of all odd and one even number" do
+        it "returns the one even number" do
+            expect(find_outlier([1, 2, 3])).to eq(2)
+        end
+    end
 end
